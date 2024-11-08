@@ -7,33 +7,40 @@ PhoneBook::PhoneBook() : contacts() {}
 
 PhoneBook::~PhoneBook() {}
 
-std::string PhoneBook::input_new_contact(const char *str, Contacts contact, const char *valid)
+std::string PhoneBook::input_new_contact(const char *str, Contacts &contact, const char *valid)
 {
 	contact.print_contact();
-	reset:
 	std::string input;
-	std::cout << "Please enter the " << str << " of the contact > ";
-	std::getline(std::cin, input);
-	if (input.empty())
+	bool valid_input = true;
+	while (std::cin)
 	{
-		contact.print_contact();
-		std::cout << "Input cannot be empty. Please try again." << std::endl;
-		goto reset;
-	}
-	if (input.length() > 50)
-	{
-		contact.print_contact();
-		std::cout << "Input cannot be longer than 50 characters. Please try again." << std::endl;
-		goto reset;
-	}
-	for (size_t i = 0; i < input.length(); i++)
-	{
-		if (strchr(valid, input[i]) == NULL)
+		std::cout << "Please enter the " << str << " of the contact > ";
+		std::getline(std::cin, input);
+		valid_input = true;
+		if (input.empty())
 		{
 			contact.print_contact();
-			std::cout << "Invalid input. Please try again." << std::endl;
-			goto reset;
+			std::cout << "Input cannot be empty. Please try again." << std::endl;
+			continue;
 		}
+		if (input.length() > 50)
+		{
+			contact.print_contact();
+			std::cout << "Input cannot be longer than 50 characters. Please try again." << std::endl;
+			continue;
+		}
+		for (size_t i = 0; i < input.length(); i++)
+		{
+			if (strchr(valid, input[i]) == NULL)
+			{
+				contact.print_contact();
+				std::cout << "Invalid input. Please try again." << std::endl;
+				valid_input = false;
+				break;
+			}
+		}
+		if (valid_input)
+			break;
 	}
 	return input;
 }
@@ -51,7 +58,7 @@ void PhoneBook::add()
 	contacts[i].set_darkest_secret(input_new_contact("Darkest secret", contacts[i], ALPHA NUMBER SPECIAL));
 	contacts[i].print_contact();
 	i++;
-}	
+}
 bool PhoneBook::print_book()
 {
 	system("clear");
@@ -95,33 +102,36 @@ void PhoneBook::search()
 {
 	if (PhoneBook::print_book() == false)
 		return;
-	reset:
 	std::string index;
-	std::cout << "Please enter the index of the contact you would like to view > ";
-	std::getline(std::cin, index);
-	if (index.empty())
+	while (std::cin)
 	{
-		PhoneBook::print_book();
-		std::cout << "Input cannot be empty. Please try again." << std::endl;
-		goto reset;
-	}
-	if (index.length() > 1)
-	{
-		PhoneBook::print_book();
-		std::cout << "Input cannot be longer than 1 character. Please try again." << std::endl;
-		goto reset;
-	}
-	if (index[0] < '1' || index[0] > '8')
-	{
-		PhoneBook::print_book();
-		std::cout << "Invalid input. Please try again." << std::endl;
-		goto reset;
-	}
-	if (contacts[index[0] - '1'].get_first_name().empty())
-	{
-		PhoneBook::print_book();
-		std::cout << "Contact does not exist. Please try again." << std::endl;
-		goto reset;
+		std::cout << "Please enter the index of the contact you would like to view > ";
+		std::getline(std::cin, index);
+		if (index.empty())
+		{
+			PhoneBook::print_book();
+			std::cout << "Input cannot be empty. Please try again." << std::endl;
+			continue;
+		}
+		if (index.length() > 1)
+		{
+			PhoneBook::print_book();
+			std::cout << "Input cannot be longer than 1 character. Please try again." << std::endl;
+			continue;
+		}
+		if (index[0] < '1' || index[0] > '8')
+		{
+			PhoneBook::print_book();
+			std::cout << "Invalid input. Please try again." << std::endl;
+			continue;
+		}
+		if (contacts[index[0] - '1'].get_first_name().empty())
+		{
+			PhoneBook::print_book();
+			std::cout << "Contact does not exist. Please try again." << std::endl;
+			continue;
+		}
+		break;
 	}
 	contacts[index[0] - '1'].print_contact();
 }
@@ -129,7 +139,7 @@ void PhoneBook::search()
 void PhoneBook::start()
 {
 	std::string command;
-	while (1)
+	while (std::cin)
 	{
 		system("clear");
 		std::cout << "Welcome to PhoneBook!" << std::endl;

@@ -1,11 +1,10 @@
 CC = g++
-NAME = book
+NAME = replace
 
 CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3
 
 SRCS = main.cpp \
-		PhoneBook.cpp \
-		Contacts.cpp
+		replace.cpp
 
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
@@ -22,7 +21,7 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)

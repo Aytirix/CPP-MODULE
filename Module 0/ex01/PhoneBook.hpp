@@ -18,7 +18,7 @@ public:
 	void search();
 private:
 	Contacts contacts[MAX_CONTACTS];
-	std::string input_new_contact(const char *str, Contacts contact, const char *valid);
+	std::string input_new_contact(const char *str, Contacts &contact, const char *valid);
 	bool print_book();
 };
 

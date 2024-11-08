@@ -1,11 +1,12 @@
 CC = g++
-NAME = book
+NAME = Zombie
 
 CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3
 
 SRCS = main.cpp \
-		PhoneBook.cpp \
-		Contacts.cpp
+		Zombie.cpp \
+		newZombie.cpp \
+		randomChump.cpp \
 
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
@@ -22,7 +23,7 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)

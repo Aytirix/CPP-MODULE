@@ -16,6 +16,5 @@ int main(int ac, char **av)
 	}
 	PhoneBook pb;
 	pb.start();
-	pb.~PhoneBook();
 	return 0;
 }
