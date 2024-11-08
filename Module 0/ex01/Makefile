@@ -1,7 +1,7 @@
 CC = g++
 NAME = book
 
-CFLAGS = -std=c++98 -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3
 
 SRCS = main.cpp \
 		PhoneBook.cpp \
