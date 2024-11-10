@@ -11,6 +11,11 @@ Replace::~Replace()
 int Replace::init_file(const std::string filename, const std::string s1, const std::string s2)
 {
 	this->_s1 = s1;
+	if (this->_s1.length() == 0)
+	{
+		std::cout << "Error: string to replace is empty" << std::endl;
+		return false;
+	}
 	this->_s2 = s2;
 	this->_filename = filename;
 	this->_file.open(this->_filename.c_str());
@@ -32,16 +37,21 @@ int Replace::init_file(const std::string filename, const std::string s1, const s
 const std::string Replace::SearchAndReplace(std::string line)
 {
 	size_t pos = 0;
-	while ((pos = line.find(this->_s1, pos)) != std::string::npos)
+	while ((pos = line.find(this->_s1, pos)) != std::string::npos && pos < line.length())
 	{
-		for (size_t i = 0; i < this->_s2.length(); i++)
+		if (this->_s2.length() > 0)
 		{
-			if (i < this->_s1.length())
-				line[pos + i] = this->_s2[i];
-			else
-				line.insert(pos + i, 1, this->_s2[i]);
+			for (size_t i = 0; i < this->_s2.length(); i++)
+			{
+				if (i < this->_s1.length())
+					line[pos + i] = this->_s2[i];
+				else
+					line.insert(pos + i, 1, this->_s2[i]);
+			}
+			pos += this->_s2.length();
 		}
-		pos += this->_s2.length();
+		else
+			line.erase(pos, this->_s1.length());
 	}
 	return line;
 }
