@@ -8,6 +8,7 @@ int main(int ac, char **av)
 		return 1;
 	}
 	Replace r;
-	r.replace(av[1], av[2], av[3]);
+	if (r.replace(av[1], av[2], av[3]) == false)
+		return 1;
 	return 0;
 }
