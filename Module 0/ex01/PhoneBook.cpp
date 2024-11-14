@@ -98,7 +98,6 @@ bool PhoneBook::print_book()
 }
 
 void PhoneBook::search()
-
 {
 	if (PhoneBook::print_book() == false)
 		return;

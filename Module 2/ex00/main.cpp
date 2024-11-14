@@ -1,16 +1,15 @@
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 
 int main(void)
 {
-	Zombie* z1 = newZombie("Zombie one");
-	Zombie* z2 = newZombie("Zombie two");
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
 
-	z1->announce();
-	z2->announce();
-	delete z1;
-	delete z2;
+	c = b;
 
-	randomChump("Zombie three temp");
-
-	return 1;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
 }
