@@ -1,11 +1,7 @@
 #ifndef CONTACTS_HPP
 #define CONTACTS_HPP
 
-#include <string>
-#include <ostream>
 #include <iostream>
-#include <cstdlib>
-#include <cstring>
 
 class Contacts
 {
