@@ -26,19 +26,6 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=(const Fixed& other) {
-	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &other && this->value != other.value) {
-		this->value = other.value;
-	}
-	return *this;
-}
-
-std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {
-	os << fixed.toFloat();
-	return os;
-}
-
 int Fixed::getValue() const {
 	return this->value;
 }
@@ -52,3 +39,15 @@ float Fixed::toFloat() const
 {
 	return (float)this->value / (1 << Fixed::fractionalBits);
 }
+
+Fixed Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return a.toFloat() > b.toFloat() ? a.toFloat() : b.toFloat();
+}
+
+
+Fixed Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return a.toFloat() < b.toFloat() ? a.toFloat() : b.toFloat();
+}
+

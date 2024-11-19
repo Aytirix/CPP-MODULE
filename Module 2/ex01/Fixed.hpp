@@ -12,11 +12,11 @@ public:
 	Fixed(const Fixed& other);
 	~Fixed();
 
-	int toInt() const;
-	int getRawBits(void) const;
 	Fixed& operator=(const Fixed& other);
 	friend std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
 	int getValue() const;
+	int toInt() const;
+	float toFloat() const;
 private:
 	int value;
 	static const int fractionalBits = 8;
