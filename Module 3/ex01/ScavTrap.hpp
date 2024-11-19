@@ -1,16 +1,16 @@
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
 #include <iostream>
 #include <cstdlib>
 
-class ClapTrap {
+class ScavTrap {
 public:
 	// Constructors and destructors
-	ClapTrap();
-	ClapTrap(std::string name);
-	ClapTrap(const ClapTrap& other);
-	~ClapTrap();
+	ScavTrap();
+	ScavTrap(std::string name);
+	ScavTrap(const ScavTrap& other);
+	~ScavTrap();
 
 	// Getters
 	std::string getName();
