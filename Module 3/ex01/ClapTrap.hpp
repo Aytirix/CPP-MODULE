@@ -10,6 +10,7 @@ public:
 	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap& other);
+	ClapTrap& operator=(const ClapTrap &other);
 	~ClapTrap();
 
 	// Getters
@@ -23,11 +24,12 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 	bool CheckConsumer();
-private:
+
+protected:
 	std::string name;
-	unsigned int AttackDamage;
-	unsigned int EnergyPoints;
 	unsigned int LifePoints;                                                                                                     
+	unsigned int EnergyPoints;
+	unsigned int AttackDamage;
 };
 
 #endif

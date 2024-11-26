@@ -23,6 +23,16 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 	std::cout << "ClapTrap " << name << " copied!" << std::endl;
 }
 
+ClapTrap& ClapTrap::operator=(const ClapTrap &other)
+{
+	std::cout << "ClapTrap assignation operator called!" << std::endl;
+	this->name = other.name;
+	this->LifePoints = other.LifePoints;
+	this->EnergyPoints = other.EnergyPoints;
+	this->AttackDamage = other.AttackDamage;
+	return (*this);
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << name << " is destroyed!" << std::endl;

@@ -1,27 +1,22 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main(void)
 {
 	system("clear");
 
 	ClapTrap camille = ClapTrap("Camille");
-	ClapTrap spike = ClapTrap("Spike");
+	ScavTrap other = ScavTrap("Other");
 
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
+	camille.attack("Spike");
+	camille.attack("Spike");
 	camille.beRepaired(10);
+	camille.takeDamage(100);
+	camille.takeDamage(100);
 
-	spike.takeDamage(9);
-	spike.beRepaired(10);
-	spike.takeDamage(100);
-	spike.takeDamage(100);
+	other.attack("Camille");
+	other.attack("Camille");
+	other.takeDamage(50);
+	other.takeDamage(10);
 	return 0;
 }

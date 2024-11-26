@@ -1,23 +1,33 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : ClapTrap()
 {
-	this->name = "Default";
-	this->LifePoints = 10;
-	this->EnergyPoints = 10;
-	this->AttackDamage = 0;
+	LifePoints = 100;
+	EnergyPoints = 50;
+	AttackDamage = 20;
 	std::cout << "ScavTrap " << name << " is created!" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	this->name = name;
-	std::cout << "ScavTrap " << name << " is created!" << std::endl;
+	LifePoints = 100;
+	EnergyPoints = 50;
+	AttackDamage = 20;
+	std::cout << "ScavTrap " << AttackDamage << " is created!" << std::endl;
 }
-ScavTrap::ScavTrap(const ScavTrap &other)
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
 	*this = other;
 	std::cout << "ScavTrap " << name << " copied!" << std::endl;
+}
+ScavTrap& ScavTrap::operator=(const ScavTrap &other)
+{
+	std::cout << "ScavTrap assignation operator called!" << std::endl;
+	this->name = other.name;
+	this->LifePoints = other.LifePoints;
+	this->EnergyPoints = other.EnergyPoints;
+	this->AttackDamage = other.AttackDamage;
+	return (*this);
 }
 
 ScavTrap::~ScavTrap()
