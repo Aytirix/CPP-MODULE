@@ -24,7 +24,8 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 	bool CheckConsumer();
-private:
+
+protected:
 	std::string name;
 	unsigned int LifePoints;                                                                                                     
 	unsigned int EnergyPoints;

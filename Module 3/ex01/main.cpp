@@ -6,7 +6,7 @@ int main(void)
 	system("clear");
 
 	ClapTrap camille = ClapTrap("Camille");
-	ScavTrap other = ScavTrap("Other");
+	ScavTrap Scav = ScavTrap("Scav");
 
 	camille.attack("Spike");
 	camille.attack("Spike");
@@ -14,9 +14,10 @@ int main(void)
 	camille.takeDamage(100);
 	camille.takeDamage(100);
 
-	other.attack("Camille");
-	other.attack("Camille");
-	other.takeDamage(50);
-	other.takeDamage(10);
+	Scav.attack("Camille");
+	Scav.attack("Camille");
+	Scav.takeDamage(50);
+	Scav.takeDamage(10);
+	Scav.guardGate();
 	return 0;
 }

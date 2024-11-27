@@ -78,7 +78,9 @@ void ClapTrap::attack(std::string const &target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (CheckConsumer())
+	if (this->LifePoints == 0)
+		std::cout << "ClapTrap " << name << " is already dead!" << std::endl;
+	else
 	{
 		if (this->LifePoints <= amount)
 			this->LifePoints = 0;

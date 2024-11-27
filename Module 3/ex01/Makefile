@@ -1,7 +1,7 @@
 CC = g++
-NAME = ClapTrap
+NAME = ScavTrap
 
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3 -pedantic
 
 SRCS = main.cpp \
 		ClapTrap.cpp \
