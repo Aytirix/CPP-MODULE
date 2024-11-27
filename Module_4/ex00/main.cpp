@@ -1,27 +1,19 @@
-#include "ClapTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
 int main(void)
 {
 	system("clear");
+	
+    Animal* dog = new Dog();
+    Animal* cat = new Cat();
 
-	ClapTrap camille = ClapTrap("Camille");
-	ClapTrap spike = ClapTrap("Spike");
+    dog->makeSound();
+    cat->makeSound();
 
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.attack(spike.getName());
-	camille.beRepaired(10);
+    delete dog;
+    delete cat;
 
-	spike.takeDamage(9);
-	spike.beRepaired(10);
-	spike.takeDamage(100);
-	spike.takeDamage(100);
-	return 0;
+    return 0;
 }

@@ -1,10 +1,12 @@
 CC = g++
-NAME = ClapTrap
+NAME = Polymorphism
 
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3 -pedantic
+CFLAGS = -std=c++98 -pedantic -Wall -Wextra -Werror -fsanitize=address -g3
 
 SRCS = main.cpp \
-		ClapTrap.cpp \
+		Animal.cpp \
+		Dog.cpp \
+		Cat.cpp
 
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
