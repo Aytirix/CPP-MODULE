@@ -1,10 +1,12 @@
 CC = g++
-NAME = Fixed
+NAME = FragTrap
 
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3 -pedantic
 
 SRCS = main.cpp \
-		Fixed.cpp \
+		ClapTrap.cpp \
+		ScavTrap.cpp \
+		FragTrap.cpp
 
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
