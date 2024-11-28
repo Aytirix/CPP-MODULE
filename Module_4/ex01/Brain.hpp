@@ -1,16 +1,16 @@
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
 #include <iostream>
 #include <cstdlib>
 
-class Animal {
+class Brain {
 public:
-	Animal();
-	Animal(std::string name);
-	Animal(const Animal& other);
-	Animal& operator=(const Animal &other);
-	virtual ~Animal();	
+	Brain();
+	Brain(std::string name);
+	Brain(const Brain& other);
+	Brain& operator=(const Brain &other);
+	virtual ~Brain();	
 
 	// Getters and setters
 	std::string getType() const { return _type; }
