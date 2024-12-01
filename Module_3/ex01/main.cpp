@@ -14,6 +14,8 @@ int main(void)
 	camille.takeDamage(100);
 	camille.takeDamage(100);
 
+	std::cout << std::endl;
+	
 	Scav.attack("Camille");
 	Scav.attack("Camille");
 	Scav.takeDamage(50);

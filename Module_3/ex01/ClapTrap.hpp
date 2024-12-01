@@ -11,7 +11,7 @@ public:
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap& other);
 	ClapTrap& operator=(const ClapTrap &other);
-	~ClapTrap();
+	virtual ~ClapTrap();
 
 	// Getters
 	std::string getName();
@@ -20,7 +20,7 @@ public:
 	void setName(std::string name);
 
 	// Functions
-	void attack(std::string const & target);
+	virtual void attack(std::string const & target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 	bool CheckConsumer();
