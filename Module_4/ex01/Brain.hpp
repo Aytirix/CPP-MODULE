@@ -13,13 +13,13 @@ public:
 	virtual ~Brain();	
 
 	// Getters and setters
-	std::string getType() const { return _type; }
-	void setType(std::string type) { _type = type; }
+	std::string getIdea(int i) const;
+	const std::string *getIdeasAddress(int i) const;
+	void setIdea(int i, std::string ideas);
 
 	// Functions
-	virtual void makeSound() const;
 protected:
-	std::string _type;
+	std::string _ideas[100];
 };
 
 #endif

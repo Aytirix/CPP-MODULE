@@ -2,6 +2,7 @@
 #define CAT_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 #include <iostream>
 #include <cstdlib>
@@ -15,10 +16,14 @@ public:
 	Cat& operator=(const Cat &other);
 	virtual ~Cat();
 
+	void getIdeas(void) const;
+	void setIdeas(int i, std::string ideas);
+
 	// Functions
 	void makeSound() const;
 private:
 	std::string _type;
+	Brain *_brain;
 };
 
 #endif

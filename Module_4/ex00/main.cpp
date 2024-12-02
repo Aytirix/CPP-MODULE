@@ -1,51 +1,66 @@
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
-#include "Dog.hpp"
 #include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+#include <map>
 
-// Fonction pour afficher du texte en couleur
-void printColor(const std::string& text, int color)
+void	printColor(const std::string &text, std::string color)
 {
-	std::cout << "\033[1;" << color << "m \n" << text << "\033[0m";
+	std::map<std::string, std::string> colorMap;
+	colorMap["black"] = "30";
+	colorMap["red"] = "31";
+	colorMap["green"] = "32";
+	colorMap["yellow"] = "33";
+	colorMap["blue"] = "34";
+	colorMap["magenta"] = "35";
+	colorMap["cyan"] = "36";
+	colorMap["white"] = "37";
+	std::map<std::string, std::string>::iterator it = colorMap.find(color);
+	if (it != colorMap.end())
+		color = it->second;
+	else
+		color = "37";
+	std::cout << "\033[1;" << color << "m" << text << "\033[0m" << std::endl;
 }
 
-int main()
+int	main(void)
 {
+	system("clear");
 	// Test 1: Animal
-	printColor("Test 1: Animal\n", 33);
-	const Animal* meta = new Animal();
+	printColor("Test 1: Animal", "yellow");
+	const Animal *meta = new Animal();
 	std::cout << "Type: " << meta->getType() << std::endl;
 	meta->makeSound();
 	delete meta;
 
 	// Test 2: Dog
-	printColor("Test 2: Dog\n", 34);
-	const Animal* dog = new Dog();
+	printColor("\nTest 2: Dog", "green");
+	const Animal *dog = new Dog();
 	std::cout << "Type: " << dog->getType() << std::endl;
 	dog->makeSound();
 	delete dog;
 
 	// Test 3: Cat
-	printColor("Test 3: Cat\n", 35);
-	const Animal* cat = new Cat();
+	printColor("\nTest 3: Cat", "blue");
+	const Animal *cat = new Cat();
 	std::cout << "Type: " << cat->getType() << std::endl;
 	cat->makeSound();
 	delete cat;
 
 	// Test 4: WrongAnimal
-	printColor("Test 4: WrongAnimal\n", 36);
-	const WrongAnimal* wrongAnimal = new WrongAnimal();
+	printColor("\nTest 4: WrongAnimal", "magenta");
+	const WrongAnimal *wrongAnimal = new WrongAnimal();
 	std::cout << "Type: " << wrongAnimal->getType() << std::endl;
 	wrongAnimal->makeSound();
 	delete wrongAnimal;
 
 	// Test 5: WrongCat
-	printColor("Test 5: WrongCat\n", 31);
-	const WrongCat* wrongCat = new WrongCat();
+	printColor("\nTest 5: WrongCat", "cyan");
+	const WrongCat *wrongCat = new WrongCat();
 	std::cout << "Type: " << wrongCat->getType() << std::endl;
 	wrongCat->makeSound();
 	delete wrongCat;
 
-	return 0;
+	return (0);
 }
