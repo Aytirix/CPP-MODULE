@@ -26,10 +26,8 @@ int	main(void)
 {
 	system("clear");
 
-
-
 	printColor("\nTest 3: Cat", "blue");
-	Cat *cat = new Cat();
+	Animal *cat = new Cat();
 	std::cout << "Type: " << cat->getType() << std::endl;
 	cat->setIdeas(0, "I am a cat");
 	cat->setIdeas(3, "I am not a dog");
@@ -42,7 +40,7 @@ int	main(void)
 	delete cat;
 
 	printColor("\nTest 4: Dog", "green");
-	Dog *dog = new Dog();
+	Animal *dog = new Dog();
 	std::cout << "Type: " << dog->getType() << std::endl;
 	dog->makeSound();
 	dog->setIdeas(2, "I am a dog");
@@ -52,12 +50,10 @@ int	main(void)
 	dog->setIdeas(745, "I am not a non binary");
 	dog->setIdeas(99, "I am not a non binary");
 	dog->getIdeas();
-	Dog *dog2 = new Dog(*dog);
-	delete dog;
+	Animal *dog2 = dog;
 
 	printColor("\nTest 4: Dog", "green");
 	dog2->setIdeas(0, "copy dog");
-	dog2->setIdeas(99, "");
 	dog2->getIdeas();
 	delete dog2;
 	return 0;
