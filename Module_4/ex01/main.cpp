@@ -25,40 +25,38 @@ void	printColor(const std::string &text, std::string color)
 int	main(void)
 {
 	system("clear");
+	Animal *animal[10];
 
+	printColor("Creating 5 dogs", "green");
+	for (int i = 0; i < 5; i++)
+	{
+		animal[i] = new Dog();
+		animal[i]->makeSound();
+	}
+	printColor("\nCreating 5 cats", "green");
+	for (int i = 5; i < 10; i++)
+	{
+		animal[i] = new Cat();
+		animal[i]->makeSound();
+	}
 
+	printColor("\nDeleting all animals", "red");
+	for (int i = 0; i < 10; i++)
+	{
+		delete animal[i];
+	}
 
-	printColor("\nTest 3: Cat", "blue");
+	printColor("\nTest IDEAS CAT", "green");
 	Cat *cat = new Cat();
-	std::cout << "Type: " << cat->getType() << std::endl;
 	cat->setIdeas(0, "I am a cat");
-	cat->setIdeas(3, "I am not a dog");
-	cat->setIdeas(8, "I am not a human");
-	cat->setIdeas(9, "I am a cat");
-	cat->setIdeas(555, "I am not a non binary");
-	cat->setIdeas(55, "I am not a non binary");
+	cat->setIdeas(1, "I am a cat 2");
+	cat->setIdeas(5, "I am a cat 3");
 	cat->getIdeas();
-	cat->makeSound();
+
+	printColor("\nTest copy constructor", "green");
+	Cat *cat2 = new Cat(*cat);
+	cat2->getIdeas();
 	delete cat;
-
-	printColor("\nTest 4: Dog", "green");
-	Dog *dog = new Dog();
-	std::cout << "Type: " << dog->getType() << std::endl;
-	dog->makeSound();
-	dog->setIdeas(2, "I am a dog");
-	dog->setIdeas(0, "I am not a cat");
-	dog->setIdeas(-1, "I am not a human");
-	dog->setIdeas(99, "I am a dog");
-	dog->setIdeas(745, "I am not a non binary");
-	dog->setIdeas(99, "I am not a non binary");
-	dog->getIdeas();
-	Dog *dog2 = new Dog(*dog);
-	delete dog;
-
-	printColor("\nTest 4: Dog", "green");
-	dog2->setIdeas(0, "copy dog");
-	dog2->setIdeas(99, "");
-	dog2->getIdeas();
-	delete dog2;
-	return 0;
+	delete cat2;
+	return (0);
 }

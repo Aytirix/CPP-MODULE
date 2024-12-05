@@ -28,20 +28,19 @@ Cat::~Cat()
 	std::cout << "Cat " << getType() << " is destroyed!" << std::endl;
 }
 
-Cat& Cat::operator=(const Cat &other)
+Cat& Cat::operator=(const Cat &src)
 {
-    if (this != &other) {
-        Animal::operator=(other);
-        _type = other._type;
-		_brain = new Brain(*other._brain);
-		if (_brain == NULL)
+    std::cout << "Cat assignation operator called!" << std::endl;
+    if (this != &src)
+	{
+        this->_type = src._type;
+		this->_brain = new Brain(*src._brain);
+		if (this->_brain == NULL)
 		{
 			std::cerr << "Memory allocation failed for _brain" << std::endl;
 			exit(1);
 		}
-		*_brain = *other._brain;
     }
-    std::cout << "Cat assignation operator called!" << std::endl;
     return *this;
 }
 

@@ -13,8 +13,8 @@ Dog::Dog(std::string type) : Animal(type)
 
 Dog::Dog(const Dog &other) : Animal(other)
 {
-	*this = other;
 	std::cout << "Dog " << getType() << " copied!" << std::endl;
+	*this = other;
 }
 
 Dog::~Dog()
@@ -23,20 +23,19 @@ Dog::~Dog()
 	std::cout << "Dog " << getType() << " is destroyed!" << std::endl;
 }
 
-Dog& Dog::operator=(const Dog &other)
+Dog& Dog::operator=(const Dog &src)
 {
-    if (this != &other) {
-        Animal::operator=(other);
-        _type = other._type;
-		_brain = new Brain(*other._brain);
-		if (_brain == NULL)
+    std::cout << "Dog assignation operator called!" << std::endl;
+    if (this != &src)
+	{
+        this->_type = src._type;
+		this->_brain = new Brain(*src._brain);
+		if (this->_brain == NULL)
 		{
 			std::cerr << "Memory allocation failed for _brain" << std::endl;
 			exit(1);
 		}
-		*_brain = *other._brain;
     }
-    std::cout << "Cat assignation operator called!" << std::endl;
     return *this;
 }
 
@@ -57,4 +56,9 @@ void Dog::getIdeas(void) const
 void Dog::setIdeas(int i, std::string ideas)
 {
 	_brain->setIdea(i, ideas);
+}
+
+Brain *Dog::getBrain(void)
+{
+	return _brain;
 }

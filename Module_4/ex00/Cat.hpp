@@ -17,8 +17,6 @@ public:
 
 	// Functions
 	void makeSound() const;
-private:
-	std::string _type;
 };
 
 #endif

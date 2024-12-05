@@ -18,11 +18,12 @@ public:
 
 	void getIdeas(void) const;
 	void setIdeas(int i, std::string ideas);
+	void getBrain(void) const;
+	Brain *getBrain(void);
 
 	// Functions
 	void makeSound() const;
 private:
-	std::string _type;
 	Brain *_brain;
 };
 

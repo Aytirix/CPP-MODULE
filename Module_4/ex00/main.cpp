@@ -30,9 +30,12 @@ int	main(void)
 	// Test 1: Animal
 	printColor("Test 1: Animal", "yellow");
 	const Animal *meta = new Animal();
+	const Animal *meta2 = new Animal(*meta);
 	std::cout << "Type: " << meta->getType() << std::endl;
 	meta->makeSound();
+	meta2->makeSound();
 	delete meta;
+	delete meta2;
 
 	// Test 2: Dog
 	printColor("\nTest 2: Dog", "green");
