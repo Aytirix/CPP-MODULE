@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal("Cat")
+Cat::Cat() : A_Animal("Cat")
 {
 	_brain = new Brain();
 	if (_brain == NULL)
@@ -11,12 +11,12 @@ Cat::Cat() : Animal("Cat")
 	std::cout << "Cat " << getType() << " is created!" << std::endl;
 }
 
-Cat::Cat(std::string type) : Animal(type)
+Cat::Cat(std::string type) : A_Animal(type)
 {
 	std::cout << "Cat " << getType() << " is created!" << std::endl;
 }
 
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const Cat &other) : A_Animal(other)
 {
 	*this = other;
 	std::cout << "Cat " << getType() << " copied!" << std::endl;

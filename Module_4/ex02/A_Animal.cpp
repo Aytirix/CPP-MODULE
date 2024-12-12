@@ -1,21 +1,21 @@
-#include "Animal.hpp"
+#include "A_Animal.hpp"
 
-Animal::Animal() : _type("None")
+A_Animal::A_Animal() : _type("None")
 {
 	std::cout << "Animal " << _type << " is created!" << std::endl;
 }
 
-Animal::Animal(std::string type) : _type(type)
+A_Animal::A_Animal(std::string type) : _type(type)
 {
 	std::cout << "Animal " << _type << " is created!" << std::endl;
 }
 
-Animal::Animal(const Animal &other) : _type(other._type)
+A_Animal::A_Animal(const A_Animal &other) : _type(other._type)
 {
 	std::cout << "Animal " << _type << " copied!" << std::endl;
 }
 
-Animal& Animal::operator=(const Animal &other)
+A_Animal& A_Animal::operator=(const A_Animal &other)
 {
     if (this != &other) {
         _type = other._type;
@@ -24,7 +24,7 @@ Animal& Animal::operator=(const Animal &other)
     return *this;
 }
 
-Animal::~Animal()
+A_Animal::~A_Animal()
 {
 	std::cout << "Animal " << _type << " is destroyed!" << std::endl;
 }

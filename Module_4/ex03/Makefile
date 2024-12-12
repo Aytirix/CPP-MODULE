@@ -4,10 +4,7 @@ NAME = Polymorphism
 CFLAGS = -std=c++98 -pedantic -Wall -Wextra -Werror -fsanitize=address -g3
 
 SRCS = main.cpp \
-		A_Animal.cpp \
-		Dog.cpp \
-		Cat.cpp \
-		Brain.cpp
+		AMateria.cpp \
 
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))

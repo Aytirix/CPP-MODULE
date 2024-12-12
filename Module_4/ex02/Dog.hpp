@@ -1,13 +1,13 @@
 #ifndef DOG_HPP
 #define DOG_HPP
 
-#include "Animal.hpp"
+#include "A_Animal.hpp"
 #include "Brain.hpp"
 
 #include <iostream>
 #include <cstdlib>
 
-class Dog : public Animal {
+class Dog : public A_Animal {
 public:
 	// Constructors and destructors
 	Dog();

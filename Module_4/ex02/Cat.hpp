@@ -1,13 +1,13 @@
 #ifndef CAT_HPP
 #define CAT_HPP
 
-#include "Animal.hpp"
+#include "A_Animal.hpp"
 #include "Brain.hpp"
 
 #include <iostream>
 #include <cstdlib>
 
-class Cat : public Animal {
+class Cat : public A_Animal {
 public:
 	// Constructors and destructors
 	Cat();

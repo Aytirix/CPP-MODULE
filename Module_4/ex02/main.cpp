@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "A_Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Colors.hpp"
@@ -7,7 +7,8 @@
 int	main(void)
 {
 	system("clear");
-	Animal *animal[10];
+	// A_Animal *animal = new A_Animal();
+	A_Animal *animal[10];
 
 	std::cout << GREEN REVERSE "Creating 5 dogs" RESET << std::endl;
 	for (int i = 0; i < 5; i++)

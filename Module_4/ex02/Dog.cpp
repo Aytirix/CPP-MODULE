@@ -1,17 +1,17 @@
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog")
+Dog::Dog() : A_Animal("Dog")
 {
 	_brain = new Brain();
 	std::cout << "Dog " << getType() << " is created!" << std::endl;
 }
 
-Dog::Dog(std::string type) : Animal(type)
+Dog::Dog(std::string type) : A_Animal(type)
 {
 	std::cout << "Dog " << getType() << " is created!" << std::endl;
 }
 
-Dog::Dog(const Dog &other) : Animal(other)
+Dog::Dog(const Dog &other) : A_Animal(other)
 {
 	std::cout << "Dog " << getType() << " copied!" << std::endl;
 	*this = other;
