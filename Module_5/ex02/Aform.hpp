@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef Aform_HPP
+#define Aform_HPP
 
 #include "Bureaucrat.hpp"
 #include <iostream>
@@ -9,15 +9,15 @@
 
 class Bureaucrat;
 
-class Form
+class Aform
 {
 public:
 	// Constructors and destructors
-	Form();
-	Form(std::string name, int grade_signed, int grade_exec);
-	Form(const Form &other);
-	Form &operator=(const Form &other);
-	virtual ~Form();
+	Aform();
+	Aform(std::string name, int grade_signed, int grade_exec);
+	Aform(const Aform &other);
+	Aform &operator=(const Aform &other);
+	virtual ~Aform();
 
 	// Getters and setters
 	std::string getName() const { return _name; }
@@ -25,6 +25,7 @@ public:
 	int getGradeSigned() const { return _grade_signed; }
 	int getGradeExec() const { return _grade_exec; }
 	void beSigned(Bureaucrat &bureaucrat);
+	virtual void execute(Bureaucrat const &executor) const = 0;
 
 	// Exceptions
 	class GradeTooHighException : public std::exception
@@ -61,6 +62,6 @@ private:
 
 // Operators
 
-std::ostream &operator<<(std::ostream &os, const Form &form);
+std::ostream &operator<<(std::ostream &os, const Aform &form);
 
 #endif

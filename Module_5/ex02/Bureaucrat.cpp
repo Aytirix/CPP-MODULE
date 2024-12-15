@@ -60,7 +60,7 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 	return os;
 }
 
-int Bureaucrat::signForm(Form &form)
+int Bureaucrat::signForm(Aform &form)
 {
 	try
 	{

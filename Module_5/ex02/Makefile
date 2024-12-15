@@ -5,7 +5,8 @@ CFLAGS = -std=c++98 -pedantic -Wall -Wextra -Werror -fsanitize=address -g3
 
 SRCS = main.cpp \
 		Bureaucrat.cpp \
-		Form.cpp \
+		Aform.cpp \
+		ShrubberyCreationForm.cpp \
 
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))

@@ -1,12 +1,12 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "Form.hpp"
+#include "Aform.hpp"
 #include <iostream>
 #include <cstdlib>
 #include "Colors.hpp"
 
-class Form;
+class Aform;
 
 class Bureaucrat
 {
@@ -43,7 +43,7 @@ public:
 	};
 
 	// Functions
-	int signForm(Form &form);
+	int signForm(Aform &form);
 private:
 	const std::string _name;
 	int _grade;
