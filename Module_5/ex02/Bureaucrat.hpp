@@ -44,6 +44,7 @@ public:
 
 	// Functions
 	void signForm(Aform &form);
+	void executeForm(Aform const &form);
 private:
 	const std::string _name;
 	int _grade;
