@@ -60,17 +60,7 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 	return os;
 }
 
-int Bureaucrat::signForm(Aform &form)
+void Bureaucrat::signForm(Aform &form)
 {
-	try
-	{
-		form.beSigned(*this);
-		std::cout << RED BOLD "Bureaucrat " RESET BLUE << getName() << GREEN " signed " RESET BLUE << form.getName() << GREEN " successfully!" << RESET << std::endl;
-		return true;
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << RED BOLD "Bureaucrat " RESET BLUE << getName() << RED " failed to sign " RESET BLUE << form.getName() << RED " because " << e.what() << RESET << std::endl;
-		return false;
-	}
+	form.beSigned(*this);
 }

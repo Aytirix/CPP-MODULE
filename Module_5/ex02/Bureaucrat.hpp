@@ -43,7 +43,7 @@ public:
 	};
 
 	// Functions
-	int signForm(Aform &form);
+	void signForm(Aform &form);
 private:
 	const std::string _name;
 	int _grade;

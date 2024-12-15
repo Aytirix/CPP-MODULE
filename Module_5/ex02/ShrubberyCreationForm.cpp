@@ -1,18 +1,17 @@
 #include "ShrubberyCreationForm.hpp"
 
-
 // Constructors
 ShrubberyCreationForm::ShrubberyCreationForm() : Aform("ShrubberyCreationForm", 145, 137), _target("default")
 {
 	std::cout << RED BOLD "ShrubberyCreationForm " RESET BLUE << getTarget() << GRAY " is created!" << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Aform("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Aform(target, 145, 137), _target(target)
 {
 	std::cout << RED BOLD "ShrubberyCreationForm " RESET BLUE << getTarget() << GRAY " is created!" << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : Aform("ShrubberyCreationForm", 145, 137), _target(other._target)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : Aform(other._target, 145, 137), _target(other._target)
 {
 	std::cout << RED BOLD "ShrubberyCreationForm " RESET BLUE << getTarget() << GRAY " copied!" << RESET << std::endl;
 }
@@ -52,8 +51,7 @@ std::ostream &operator<<(std::ostream &os, const ShrubberyCreationForm &Shrubber
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > getGradeExec())
-		throw Aform::GradeTooLowException();
+	Aform::execute(executor);
 	std::ofstream file(getTarget().append("_shrubbery").c_str());
 	if (!file.is_open())
 		throw FileNotOpenException();

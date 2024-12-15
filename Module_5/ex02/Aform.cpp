@@ -50,7 +50,17 @@ void Aform::beSigned(Bureaucrat &bureaucrat)
 		if (_signed == 1)
 			throw Aform::FormAlreadySignedException();
 		_signed = true;
+		std::cout << WHITE BOLD "Form " RESET BLUE << getName() << GRAY " is signed by " RESET << bureaucrat.getName() << std::endl;
 	}
 	else
-		throw Aform::GradeTooLowException();
+		throw Aform::GradeTooLowToSignException();
+}
+
+void Aform::execute(Bureaucrat const &executor) const
+{
+	if (executor.getGrade() > getGradeExec())
+		throw Aform::GradeTooLowToExecuteException();
+	if (!_signed)
+		throw Aform::FormNotSignedException();
+	std::cout << WHITE BOLD "Form " RESET BLUE << getName() << GRAY " is executed by " RESET << executor.getName() << std::endl;
 }

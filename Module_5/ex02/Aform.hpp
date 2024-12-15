@@ -52,6 +52,30 @@ public:
 		}
 	};
 
+	class GradeTooLowToSignException : public std::exception
+	{
+		virtual const char *what() const throw()
+		{
+			return "Grade is too low to sign the form!";
+		}
+	};
+
+	class FormNotSignedException : public std::exception
+	{
+		virtual const char *what() const throw()
+		{
+			return "Please sign the form before executing it.";
+		}
+	};
+
+	class GradeTooLowToExecuteException : public std::exception
+	{
+		virtual const char *what() const throw()
+		{
+			return "Grade is too low to execute the form!";
+		}
+	};
+
 	// Functions
 private:
 	const std::string _name;
