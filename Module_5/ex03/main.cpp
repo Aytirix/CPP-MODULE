@@ -340,6 +340,6 @@ int main(void)
 	system("clear");
 
 	system("rm -f tree_shrubbery");
-	system("rm -f tree_shrubbery5");
+	system("rm -f tree5_shrubbery");
 	return (0);
 }
