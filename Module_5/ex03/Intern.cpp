@@ -33,9 +33,4 @@ Intern &Intern::operator=(const Intern &other)
 	return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, const Intern &Intern)
-{
-	return os;
-}
-
 // Functions
