@@ -5,15 +5,16 @@
 #include <fstream>
 #include <cstdlib>
 #include "Colors.hpp"
-
-class Intern;
+#include "Aform.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 class Intern
 {
 public:
 	// Constructors
 	Intern();
-	Intern(std::string target);
 	Intern(const Intern &other);
 	Intern &operator=(const Intern &other);
 
@@ -23,16 +24,20 @@ public:
 	// Getters and setters
 	std::string getTarget() const { return _target; }
 
-
 	// Exceptions
+	class FromNotExist : public std::exception
+	{
+		virtual const char *what() const throw()
+		{
+			return "Your form not exist!";
+		}
+	};
 
 	// Functions
+	Aform *makeForm(std::string form, std::string target);
+
 private:
 	const std::string _target;
 };
-
-// Operators
-
-std::ostream &operator<<(std::ostream &os, const Intern &Intern);
 
 #endif
