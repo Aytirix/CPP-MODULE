@@ -1,6 +1,5 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-#include "Colors.hpp"
 #include <map>
 
 int main(void)

@@ -34,32 +34,32 @@ Intern &Intern::operator=(const Intern &other)
 Aform *Intern::makeForm(std::string form, std::string target)
 {
 
-		Aform* ret = NULL;
-        const char* formNames[] = {
-            "presidential pardon",
-            "robotomy request",
-            "shrubbery creation"
-        };
+	Aform* ret = NULL;
+	const char* formNames[] = {
+		"presidential pardon",
+		"robotomy request",
+		"shrubbery creation"
+	};
 
-		int i  = 0;
-		for (; i < 3; i++)
-			if (form == formNames[i])
-				break;
+	int i  = 0;
+	for (; i < 3; i++)
+		if (form == formNames[i])
+			break;
 
-		switch (i)
-		{
-			case 0:
-				ret = new PresidentialPardonForm(target);
-				break;
-			case 1:
-				ret = new RobotomyRequestForm(target);
-				break;
-			case 2:
-				ret = new ShrubberyCreationForm(target);
-				break;
-			default:
-				throw Intern::FromNotExist();
-		}
-		std::cout << GREEN BOLD "Intern " RESET GRAY " creates " GREEN << formNames[i] << GRAY " form." RESET << std::endl;
-		return ret;
+	switch (i)
+	{
+		case 0:
+			ret = new PresidentialPardonForm(target);
+			break;
+		case 1:
+			ret = new RobotomyRequestForm(target);
+			break;
+		case 2:
+			ret = new ShrubberyCreationForm(target);
+			break;
+		default:
+			throw Intern::FromNotExist();
+	}
+	std::cout << GREEN BOLD "Intern " RESET GRAY " creates " GREEN << formNames[i] << GRAY " form." RESET << std::endl;
+	return ret;
 }
