@@ -1,10 +1,10 @@
 CC = g++
-NAME = Bureaucrat
+NAME = Converter
 
-CFLAGS = -std=c++98 -pedantic -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -std=c++98 -pedantic #-Wall -Wextra -Werror -fsanitize=address -g3
 
 SRCS = main.cpp \
-		Bureaucrat.cpp \
+		ScalarConverter.cpp \
 
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))

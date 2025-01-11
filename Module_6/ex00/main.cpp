@@ -1,10 +1,10 @@
 #include "ScalarConverter.hpp"
 #include "Colors.hpp"
 
-int main(void)
+int main(int ac, char **av)
 {
 	system("clear");
 
-	std::cout << BOLD YELLOW "Default constructor" RESET << std::endl;
+	ScalarConverter::Convert(av[1]);
 	return (0);
 }
