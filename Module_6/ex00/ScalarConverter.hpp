@@ -1,31 +1,43 @@
 #ifndef SCARLARCONVERTER_HPP
-#define SCARLARCONVERTER_HPP
+# define SCARLARCONVERTER_HPP
 
-#include <iostream>
-#include <cstdlib>
-#include "Colors.hpp"
-#include <sstream>
+# include "Colors.hpp"
+# include <cmath>
+# include <cstdlib>
+# include <iomanip>
+# include <iostream>
+# include <limits>
+# include <sstream>
 
 class ScalarConverter
 {
-public:
+  public:
 	// Getters and setters
 
 	// Exceptions
 
 	// Functions
-	static void Convert(const std::string &literal);
-private:
+	static void convert(const std::string &literal);
+
+  private:
 	// Constructors and destructors
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter &other);
 	ScalarConverter &operator=(const ScalarConverter &other);
 	~ScalarConverter();
 
-	static void PrintToAscii(const std::string &literal);
-	static void PrintToInt(const std::string &literal);
-	static void PrintToFloat(const std::string &literal);
-	static void PrintToDouble(const std::string &literal);
+	static bool isCharLiteral(const std::string &literal);
+	static bool isIntLiteral(const std::string &literal);
+	static bool isFloatLiteral(const std::string &literal);
+	static bool isDoubleLiteral(const std::string &literal);
+
+	static void handleChar(char c);
+	static void handleInt(int value);
+	static void handleFloat(float value);
+	static void handleDouble(double value);
+
+	static void PrintChar(int value);
+	static void PrintInt(long value);
 };
 
 // Operators

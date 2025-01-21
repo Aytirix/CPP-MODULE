@@ -1,7 +1,7 @@
 CC = g++
-NAME = Converter
+NAME = convert
 
-CFLAGS = -std=c++98 -pedantic #-Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -std=c++98 -pedantic -Wall -Wextra -Werror -g3 -fsanitize=address
 
 SRCS = main.cpp \
 		ScalarConverter.cpp \
