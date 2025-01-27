@@ -1,5 +1,14 @@
-#include "Whatever.hpp"
+#include "iter.hpp"
 
+void increment(int &i)
+{
+	i++;
+}
+
+void print(int &i)
+{
+	std::cout << i << std::endl;
+}
 
 int main(int ac, char **av)
 {
@@ -8,29 +17,12 @@ int main(int ac, char **av)
 	system("clear");
 
 
-	// SWAP
-	int a = 55;
-	int b = 20;
-	std::cout << "SWAP :" << std::endl;
-	std::cout << " a = " << a << " | b = " << b << std::endl;
-	swap(a, b);
-	std::cout << " a = " << a << " | b = " << b << std::endl;
-
-	std::cout << "MIN : " << min(a , b) << std::endl;
-
-	std::cout << "MAX : " << max(a , b) << std::endl;
-
+	std::cout << "iter :" << std::endl;
+	int tab[] = {1, 2, 3, 4, 5};
+	iter(tab, 5, print);
+	iter(tab, 5, increment);
 	std::cout << std::endl;
+	iter(tab, 5, print);
 
-	std::string str1 = "World !";
-	std::string str2 = "Hello ";
-	std::cout << "SWAP :" << std::endl;
-	std::cout << " a = " << str1 << " | b = " << str2 << std::endl;
-	swap(str1, str2);
-	std::cout << " a = " << str1 << " | b = " << str2 << std::endl;
-
-	std::cout << "MIN : " << min(str1 , str2) << std::endl;
-
-	std::cout << "MAX : " << max(str1 , str2) << std::endl;
 	return (0);
 }

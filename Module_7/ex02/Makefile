@@ -1,5 +1,5 @@
 CC = g++
-NAME = iter
+NAME = Array
 
 CFLAGS = -std=c++98 -pedantic -Wall -Wextra -Werror -g3 -fsanitize=address
 
