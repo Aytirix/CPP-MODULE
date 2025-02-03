@@ -28,7 +28,7 @@ class ScalarConverter
 
 	static bool isCharLiteral(const std::string &literal);
 	static bool isIntLiteral(const std::string &literal);
-	static bool isFloatLiteral(const std::string &literal);
+	static bool isFloatLiteral(const std::string &literal, int check_max);
 	static bool isDoubleLiteral(const std::string &literal);
 
 	static void handleChar(char c);

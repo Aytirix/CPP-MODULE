@@ -1,4 +1,5 @@
 #include "ScalarConverter.hpp"
+#include <stdio.h>
 
 // Constructors and destructors
 
@@ -36,7 +37,7 @@ void ScalarConverter::convert(const std::string &literal)
 		handleChar(literal[0]);
 	else if (isIntLiteral(literal))
 		handleInt(std::atoi(literal.c_str()));
-	else if (isFloatLiteral(literal))
+	else if (isFloatLiteral(literal, 1))
 		handleFloat(static_cast<float>(std::atof(literal.c_str())));
 	else if (isDoubleLiteral(literal))
 		handleDouble(std::atof(literal.c_str()));
@@ -61,18 +62,20 @@ bool ScalarConverter::isIntLiteral(const std::string &literal)
 	return (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max());
 }
 
-bool ScalarConverter::isFloatLiteral(const std::string &literal)
+bool ScalarConverter::isFloatLiteral(const std::string &literal, int check_max)
 {
 	char	*end;
+	float	value;
 
 	if (literal == "-inff" || literal == "+inff" || literal == "nanf")
 		return (true);
 	if (literal.size() > 1 && literal[literal.size() - 1] == 'f')
 	{
+		value = std::strtof(literal.c_str(), &end);
 		std::string tmp = literal;
 		tmp.erase(tmp.size() - 1);
 		std::strtod(tmp.c_str(), &end);
-		return (*end == '\0');
+		return (*end == '\0' && (!check_max || (value >= std::numeric_limits<float>::min() && value <= std::numeric_limits<float>::max())));
 	}
 	return (false);
 }
@@ -84,7 +87,9 @@ bool ScalarConverter::isDoubleLiteral(const std::string &literal)
 	if (literal == "-inf" || literal == "+inf" || literal == "nan")
 		return (true);
 	std::strtod(literal.c_str(), &end);
-	return (*end == '\0');
+	if (*end != '\0')
+		return (isFloatLiteral(literal, 0));
+	return (true);
 }
 
 void ScalarConverter::handleChar(char c)
