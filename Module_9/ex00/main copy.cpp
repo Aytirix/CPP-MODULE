@@ -10,8 +10,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	BitcoinExchange exchange;
-	if (!exchange.loadData("data.csv"))
+	if (!exchange.loadData("data.csv") || !exchange.loadData(av[1], '|'))
 		return (1);
-	exchange.CheckInputUser(av[1]);
 	return (0);
 }

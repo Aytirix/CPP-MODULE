@@ -1,9 +1,11 @@
 CC = g++
-NAME = MutantStack
+NAME = btc
 
 CFLAGS = -std=c++98 -pedantic -Wall -Wextra -Werror -g3 -fsanitize=address
 
-SRCS = main.cpp
+SRCS = main.cpp \
+		BitcoinExchange.cpp \
+		tools.cpp
 
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
