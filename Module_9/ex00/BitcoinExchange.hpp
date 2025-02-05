@@ -7,8 +7,8 @@
 # include <sstream>
 # include <stack>
 # include <string>
-# include <vector>
 #include <fstream>
+#include <map>
 
 // Date
 #define YEAR_MIN 1900
@@ -31,7 +31,7 @@ class BitcoinExchange
 	bool loadData(const char *filename);
 	bool CheckInputUser(const char *filename);
   private:
-	std::vector<std::pair<std::string, double> > _data;
+	std::map<std::string, double> _data;
 
 	// Member functions
 	double getRate(const std::string &date);

@@ -64,7 +64,7 @@ bool BitcoinExchange::loadData(const char *filename)
 			std::cerr << "Rate: " << rate << std::endl;
 			return (false);
 		}
-		_data.push_back(std::make_pair(currency, rate));
+		_data[currency] = rate;
 	}
 	return (true);
 }
@@ -100,22 +100,21 @@ bool BitcoinExchange::CheckInputUser(const char *filename)
 		else if (rate > 2147483647)
 			std::cerr << "Error: too large a number." << std::endl;
 		else
-			std::cout << currency << " => " << rate * getRate(currency) << std::endl; 
+			std::cout << currency << "=> " << rate << " = " << rate * getRate(currency) << std::endl; 
 	}
 	return (true);
 }
 
 double BitcoinExchange::getRate(const std::string &date)
 {
-	for (size_t i = 0; i < _data.size(); i++)
-	{
-		if (_data[i].first == date)
-			return (_data[i].second);
-	}
-	for (size_t i = _data.size(); i-- > 0;)
-	{
-		if (_data[i].first < date)
-			return (_data[i].second);
-	}
-	return (-1);
+    std::map<std::string, double>::iterator it = _data.find(date);
+    if (it != _data.end())
+        return (it->second);
+    it = _data.lower_bound(date);
+    if (it != _data.begin())
+    {
+        --it;
+        return (it->second);
+    }
+    return (-1);
 }
