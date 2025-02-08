@@ -25,7 +25,7 @@ RPN::~RPN()
 
 // Member functions
 
-int RPN::calculate(const std::string &expression)
+bool RPN::calculate(const std::string &expression)
 {
 	std::istringstream iss(expression);
 	std::string token;
@@ -37,7 +37,7 @@ int RPN::calculate(const std::string &expression)
 			if (!ResolveOperator(token))
 			{
 				std::cerr << "Error: invalid operator" << std::endl;
-				return (0);
+				return (false);
 			}
 		}
 		else
@@ -47,18 +47,18 @@ int RPN::calculate(const std::string &expression)
 			else
 			{
 				std::cerr << "Error: invalid token" << std::endl;
-				return (0);
+				return (false);
 			}
 		}
 	}
 	if (_data.size() != 1)
 	{
 		std::cerr << "Error: invalid expression" << std::endl;
-		return (0);
+		return (false);
 	}
 	else
 		std::cout << _data.top() << std::endl;
-	return (_data.top());
+	return (true);
 }
 
 bool RPN::ResolveOperator(const std::string &token)
@@ -84,9 +84,10 @@ bool RPN::is_number(const std::string &token)
 {
 	for (size_t i = 0; i < token.size(); ++i)
 	{
-		std::cout << "token[i]: " << token[i] << std::endl;
 		if (!std::isdigit(token[i]))
 			return (false);
 	}
+	if (std::atoi(token.c_str()) > 9)
+		return (false);
 	return (true);
 }

@@ -10,6 +10,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	RPN rpn;
-	rpn.calculate(av[1]);
+	if (!rpn.calculate(av[1]))
+		return (1);
 	return (0);
 }

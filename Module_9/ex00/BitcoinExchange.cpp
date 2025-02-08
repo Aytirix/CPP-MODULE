@@ -100,7 +100,13 @@ bool BitcoinExchange::CheckInputUser(const char *filename)
 		else if (rate > 2147483647)
 			std::cerr << "Error: too large a number." << std::endl;
 		else
-			std::cout << currency << "=> " << rate << " = " << rate * getRate(currency) << std::endl; 
+		{
+			double price = getRate(currency);
+			if (price < 0)
+				std::cerr << "Error: no exchange rate for date " << currency << std::endl;
+			else
+				std::cout << currency << "=> " << rate << " = " << rate * price << std::endl; 
+		}
 	}
 	return (true);
 }

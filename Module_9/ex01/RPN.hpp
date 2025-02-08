@@ -28,7 +28,7 @@ class RPN
 	~RPN();
 
 	// Member functions
-	int calculate(const std::string &expression);
+	bool calculate(const std::string &expression);
   private:
 	std::stack<int> _data;
 
