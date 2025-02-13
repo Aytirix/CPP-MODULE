@@ -1,7 +1,4 @@
 #include "PmergeMe.hpp"
-#include <algorithm>
-#include <cstdlib>
-#include <utility>
 
 /**
  * @brief Crée des paires triées à partir d'un tableau d'éléments.
@@ -30,30 +27,6 @@ template <typename Container, typename Pairs,
 	}
 	if (array.size() % 2 != 0)
 		leftover.push_back(array[array.size() - 1]);
-}
-
-template <typename Container> void printPairs(const Container &pairs)
-{
-	std::cout << "Pairs: ";
-	for (size_t i = 0; i < pairs.size(); i++)
-		std::cout << "{" << pairs[i].first << ", " << pairs[i].second << "} ";
-	std::cout << std::endl;
-}
-
-template <typename Container> void printLeftovers(const Container &leftovers)
-{
-	std::cout << "Leftovers: ";
-	if (leftovers.size() > 0)
-		std::cout << leftovers[0];
-	std::cout << std::endl;
-}
-
-template <typename Container> void printArray(const Container &array)
-{
-	std::cout << "Array: ";
-	for (size_t i = 0; i < array.size(); i++)
-		std::cout << array[i] << " ";
-	std::cout << std::endl;
 }
 
 // Algorithm Ford-Johnson
@@ -115,47 +88,47 @@ template <typename Container> void PmergeMe::mergeSort(Container &arr,
 
 /**
  * @brief Insère récursivement des éléments dans un tableau trié.
- * 
+ *
  * Cette fonction prend un tableau trié `sortedArray` et un tableau `elements` et insère les éléments
  * de `elements` dans `sortedArray` de manière à maintenir l'ordre trié. La recherche de la position d'insertion
  * est effectuée à l'aide de `std::lower_bound`, et l'insertion est réalisée de manière récursive.
- * 
+ *
  * @param sortedArray Le tableau trié dans lequel les éléments seront insérés.
  * @param elements Le tableau des éléments à insérer.
  * @param left L'indice de début du tableau d'éléments.
  * @param right L'indice de fin du tableau d'éléments.
  */
-template <typename Container> void PmergeMe::insertRecursively(Container &sortedArray,
+template <typename Container> void PmergeMe::insert_Jacobsthon_Recursif(Container &sortedArray,
 	Container &elements, size_t left, size_t right)
 {
 	size_t	mid;
 
 	if (left > right)
 		return ;
+
 	mid = left + (right - left) / 2;
 	if (mid >= elements.size())
 		return ;
+
 	typename Container::iterator pos = std::lower_bound(sortedArray.begin(),
-			sortedArray.end(), elements[mid]);
+	sortedArray.end(), elements[mid]);
+
 	sortedArray.insert(pos, elements[mid]);
 	if (mid > left)
-		insertRecursively(sortedArray, elements, left, mid - 1);
+		insert_Jacobsthon_Recursif(sortedArray, elements, left, mid - 1);
 	if (mid < right)
-		insertRecursively(sortedArray, elements, mid + 1, right);
+		insert_Jacobsthon_Recursif(sortedArray, elements, mid + 1, right);
 }
 
 template <typename Container, typename Pairs,
-	typename Leftovers> void PmergeMe::mergeInsertSort(Container &array,
+	typename Leftovers> void PmergeMe::Sort_Ford_Johnson(Container &array,
 	Pairs &pairs, Leftovers &leftovers)
 {
+	if (array.size() <= 1)
+	return ;
+
 	Container	smallest;
 	Container	largest;
-
-	(void)array;
-	(void)pairs;
-	(void)leftovers;
-	if (array.size() <= 1)
-		return ;
 	for (size_t i = 0; i < pairs.size(); i++)
 	{
 		smallest.push_back(pairs[i].first);
@@ -164,6 +137,6 @@ template <typename Container, typename Pairs,
 	if (leftovers.size() > 0)
 		smallest.push_back(leftovers[0]);
 	mergeSort(largest, 0, largest.size() - 1);
-	insertRecursively(largest, smallest, 0, smallest.size() - 1);
+	insert_Jacobsthon_Recursif(largest, smallest, 0, smallest.size() - 1);
 	array = largest;
 }

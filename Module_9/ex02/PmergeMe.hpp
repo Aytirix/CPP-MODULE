@@ -1,13 +1,14 @@
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
-# include <cmath>
 # include <ctime>
 # include <deque>
-# include <iostream>
 # include <vector>
+# include <iostream>
+# include <iomanip>
+# include <algorithm>
 
-# define NUMBER_PRINT 5
+# define NUMBER_PRINT 100000
 
 class PmergeMe
 {
@@ -31,11 +32,10 @@ class PmergeMe
 	void CreatePairs(Container &array, Pairs &pair, Leftovers &leftover);
 
 	template <typename Container, typename Pairs, typename Leftovers>
-	void mergeInsertSort(Container &array, Pairs &pairs, Leftovers &leftovers);
-
+	void Sort_Ford_Johnson(Container &array, Pairs &pairs, Leftovers &leftovers);
 
 	template <typename Container>
-	void insertRecursively(Container &sortedArray, Container &elements, size_t left, size_t right);
+	void insert_Jacobsthon_Recursif(Container &sortedArray, Container &elements, size_t left, size_t right);
 
 	template <typename Container>
 	void mergeSort(Container &arr, size_t left, size_t right);

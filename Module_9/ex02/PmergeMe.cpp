@@ -1,7 +1,5 @@
 #include "PmergeMe.hpp"
-#include <algorithm>
-#include <cstdlib>
-#include <utility>
+
 
 // Forme canonique
 
@@ -32,7 +30,7 @@ void PmergeMe::parseInput(int argc, char **argv)
 	for (i = 1; i < argc; i++)
 	{
 		num = std::atoi(argv[i]);
-		if (num < 0)
+		if (num < 0 || argv[i][0] > '9' || argv[i][0] < '0')
 		{
 			std::cerr << "Error" << std::endl;
 			exit(1);
@@ -49,29 +47,29 @@ void PmergeMe::parseInput(int argc, char **argv)
 
 void PmergeMe::sortAndMeasure()
 {
-	clock_t start, end;
+	clock_t	start, end;
 	double vectorTime, dequeTime;
 	std::vector<int> unsorted = _vector;
 
 	std::vector<std::pair<int, int> > pairs_vector;
 	std::vector<int> leftovers_vector;
-	CreatePairs(_vector, pairs_vector, leftovers_vector);
-
-	// test for Vector
-	start = clock();
-	mergeInsertSort(_vector, pairs_vector, leftovers_vector);
-	end = clock();
-	vectorTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
 	
 	std::deque<std::pair<int, int> > pairs_deque;
 	std::deque<int> leftovers_deque;
-	CreatePairs(_vector, pairs_deque, leftovers_deque);
-
+	
+	// test for Vector
+	start = clock();
+	CreatePairs(_vector, pairs_vector, leftovers_vector);
+	Sort_Ford_Johnson(_vector, pairs_vector, leftovers_vector);
+	end = clock();
+	vectorTime = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+	
 	// test for Deque
 	start = clock();
-	mergeInsertSort(_deque, pairs_deque, leftovers_deque);
+	CreatePairs(_vector, pairs_deque, leftovers_deque);
+	Sort_Ford_Johnson(_deque, pairs_deque, leftovers_deque);
 	end = clock();
-	dequeTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
+	dequeTime = static_cast<double>(end - start) / CLOCKS_PER_SEC;
 
 	printResults(unsorted, vectorTime, dequeTime);
 }
@@ -93,6 +91,8 @@ void PmergeMe::printResults(const std::vector<int> &original, double vectorTime,
 	if (_vector.size() > NUMBER_PRINT)
 		std::cout << "[...]";
 	std::cout << std::endl;
+
+	std::cout << std::fixed << std::setprecision(6);
 	std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : " << vectorTime << " us" << std::endl;
 	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : " << dequeTime << " us" << std::endl;
 }
