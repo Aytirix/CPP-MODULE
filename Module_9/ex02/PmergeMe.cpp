@@ -32,7 +32,7 @@ void PmergeMe::parseInput(int argc, char **argv)
 	for (i = 1; i < argc; i++)
 	{
 		num = std::atoi(argv[i]);
-		if (num <= 0)
+		if (num < 0)
 		{
 			std::cerr << "Error" << std::endl;
 			exit(1);
@@ -54,17 +54,18 @@ void PmergeMe::sortAndMeasure()
 	std::vector<int> unsorted = _vector;
 
 	std::vector<std::pair<int, int> > pairs_vector;
-	std::deque<std::pair<int, int> > pairs_deque;
 	std::vector<int> leftovers_vector;
-	std::deque<int> leftovers_deque;
 	CreatePairs(_vector, pairs_vector, leftovers_vector);
-	CreatePairs(_vector, pairs_deque, leftovers_deque);
 
 	// test for Vector
 	start = clock();
 	mergeInsertSort(_vector, pairs_vector, leftovers_vector);
 	end = clock();
 	vectorTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
+	
+	std::deque<std::pair<int, int> > pairs_deque;
+	std::deque<int> leftovers_deque;
+	CreatePairs(_vector, pairs_deque, leftovers_deque);
 
 	// test for Deque
 	start = clock();
