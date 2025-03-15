@@ -35,10 +35,7 @@ bool RPN::calculate(const std::string &expression)
 		if (token == "+" || token == "-" || token == "*" || token == "/")
 		{
 			if (!ResolveOperator(token))
-			{
-				std::cerr << "Error: invalid operator" << std::endl;
 				return (false);
-			}
 		}
 		else
 		{
@@ -64,7 +61,10 @@ bool RPN::calculate(const std::string &expression)
 bool RPN::ResolveOperator(const std::string &token)
 {
 	if (_data.size() < 2)
+	{
+		std::cerr << "Error: invalid operator" << std::endl;
 		return (false);
+	}
 	int a = _data.top();
 	_data.pop();
 	int b = _data.top();
@@ -76,7 +76,14 @@ bool RPN::ResolveOperator(const std::string &token)
 	else if (token == "*")
 		_data.push(a * b);
 	else if (token == "/")
+	{
+		if (a == 0)
+			{
+				std::cerr << "Error: division by zero" << std::endl;
+				return (false);
+			}
 		_data.push(b / a);
+	}
 	return (true);
 }
 
